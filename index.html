@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Card</title>
+    <style>
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Header */
+header {
+    background: #003366;
+    color: white;
+    padding: 15px 0;
+    position:sticky;
+    top:0;
+    z-index:3;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Navigation */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: orange;
+}
+
+/* Button */
+button {
+    background: blue;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Products Grid */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+/* Product Card */
+.product {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+/* Product Image */
+.product img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Text Styling */
+.product h3 {
+    margin: 10px 0;
+    color: #003366;
+}
+
+.product p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Book Button */
+.product button {
+    margin-top: 10px;
+    width: 100%;
+    background: #28a745;
+    color: white;
+}
+
+.product button:hover {
+    background: #218838;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    margin-top: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.footer-left, .footer-right {
+    width: 45%;
+}
+
+.footer-right a {
+    display: block;
+    color: white;
+    margin: 5px 0;
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    color: orange;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #111;
+}
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="container header-container">
+        <h2 class="">TNTransport</h2>
+        <img src="logo.jpg" height="50px", width="50px">
+        <nav>
+
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="Add-product.html">Add new product</a>
+                <a href="contact.html">Contact</a>
+                <button><a href="register.html">Register</a></button>
+        </nav>
+    </div>
+</header>
+
+<div id="products" class="products"></div>
+
+<script>
+    const productContainer = document.getElementById("products");
+    productContainer.innerHTML = "";
+
+    fetch("http://localhost:8080/api/product/get")
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(d => {
+                productContainer.innerHTML += `
+                <div class="product">
+                    <img src="http://localhost:8080/uploads/${d.image}" alt="${d.name}">
+                    <h3>Name: ${d.name}</h3>
+                    <p>Ratings: ${d.ratings}</p>
+                    <p>Price: $${d.price}</p>
+                    <p>Seats: ${d.seats}</p>
+                    <p>Music: ${d.music}</p>
+                    <p>AC: ${d.AC}</p>
+                    <button onclick="buyProduct('${d.name}')">Book Now</button>
+                </div>
+                `;
+            });
+        })
+        .catch(err => {
+            console.error("Error fetching products:", err);
+            productContainer.innerHTML = "<p>Failed to load products.</p>";
+        });
+
+    function buyProduct(name) {
+        alert(`${name} booked!`);
+    }
+</script>
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-left">
+                <h3>TNTransport</h3>
+                <p>123 Main Street, Trichy, India</p>
+                <p>Email: info@tntransport.com</p>
+                <p>Phone: +91 6387977672</p>
+            </div>
+            <div class="footer-right">
+                <h4>Quick Links</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="Add-product.html">Add new product</a>
+                    <a href="contact.html">Contact</a>
+                    <button><a href="register.html">Register</a></button>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AutoRent. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

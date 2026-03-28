@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental System - About Us</title>
+    <style>
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    background: url("about.jpg") no-repeat center center/cover;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header h2 {
+    margin-right: 10px;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Button */
+button {
+    background-color: orange;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* About Section */
+.about-section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.about-section h2 {
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.about-section p {
+    margin: 10px 0;
+    color:green;
+}
+
+/* Row & Columns */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.col {
+    background-color:skyblue;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+    flex: 1;
+}
+
+.col b{
+color:white;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: white;
+    margin-top: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-right {
+    width: 45%;
+}
+
+.footer-right a {
+    display: block;
+    color: white;
+    margin: 5px 0;
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background-color: #111;
+}
+.col h3{
+color:red;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .footer-left,
+    .footer-right {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-container">
+        <h2 class="">TNTransport</h2>
+        <img src="logo.jpg" height="50px", width="50px">
+        <nav>
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="Add-product.html">Add new product</a>
+            <a href="contact.html">Contact</a>
+            <button><a href="register.html">Register</a></button>
+        </nav>
+    </div>
+</header>
+<section class="about-section">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>Car Rental System</strong>!</p>
+    <p>We are committed to providing <strong>reliable, affordable, and convenient car rental services</strong> for all your travel needs. Whether you’re planning a business trip, a weekend getaway, or a long vacation, we make renting a car simple and stress-free.</p>
+
+    <p><strong>Why Choose Us?</strong></p>
+    <div class="row">
+        <div class="col">
+            <p>Wide range of well-maintained vehicles</p>
+            <p>Easy online booking and reservation system</p>
+        </div>
+        <div class="col">
+            <p>Affordable pricing with no hidden fees</p>
+            <p>24/7 customer support</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Our Mission</h3><br>
+            <b>To revolutionize the vehicle rental industry in India by creating a transparent, efficient, and customer-centric marketplace that benefits both renters and vendors. We strive to make every journey smooth, affordable, and memorable.</b>
+        </div>
+        <div class="col">
+            <h3>Our Vision</h3><br>
+            <b>To become the go-to platform for all vehicle rental needs across India and beyond. We envision a future where finding the perfect rental is as easy as a few clicks, backed by trust, quality, and excellent service.</b>
+        </div>
+    </div>
+</section>
+<footer>
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-left">
+                <h3>TNTransport</h3>
+                <p>123 Main Street, Trichy, India</p>
+                <p>Email: info@tntransport.com</p>
+                <p>Phone: +91 6387977672</p>
+            </div>
+            <div class="footer-right">
+                <h4>Quick Links</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="Add-product.html">Add new product</a>
+                    <a href="contact.html">Contact</a>
+                    <button><a href="register.html">Register</a></button>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TNTransport. All Rights Reserved.</p>
+        </div>
+    </footer>
+</footer>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Form</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 5px rgba(37,117,252,0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2575fc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1a5ed9;
+    }
+
+    .toggle {
+      margin-top: 15px;
+      text-align: center;
+      color: #2575fc;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div class="container">
+  <form id="registerForm">
+    <h2>Register</h2>
+
+    <input type="text" id="name" placeholder="Username" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="number" placeholder="Phone Number" required>
+    <input type="password" id="password" placeholder="Password" required>
+
+    <button type="submit">Register</button>
+
+    <div class="toggle" onclick="goToLogin()">Already have an account? Login</div>
+  </form>
+</div>
+
+<script>
+  document.getElementById("registerForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const number = document.getElementById("number").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    // Validation
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters");
+      return;
+    }
+
+    if (!/^[0-9]{10}$/.test(number)) {
+      alert("Enter valid 10-digit phone number");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:8080/api/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, number, password })
+      });
+
+      const data = await res.text();
+
+      if (res.ok) {
+        alert("User Registered Successfully");
+        console.log(data);
+        window.location.href = "login.html";
+
+        // Clear form
+        document.getElementById("registerForm").reset();
+
+      } else {
+        alert(data.message || "Registration Failed");
+      }
+
+    } catch (err) {
+      console.log(err);
+      alert("Server Error ");
+    }
+  });
+
+  // Redirect to login page
+  function goToLogin() {
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>
