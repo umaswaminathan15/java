@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental System - Contact Us</title>
+    <style>
+        /* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Header */
+header {
+    background: #1e3a8a;
+    color: white;
+    padding: 15px 0;
+    position:sticky;
+    top:0;
+    z-index:3;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Navigation */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #facc15;
+}
+
+nav button {
+    background:black;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav button a {
+    color:white;
+    text-decoration: none;
+}
+
+/* Contact Section */
+.contact-section {
+    background:url(contact.jpg);
+    background-repeat:no repeat;
+    background-size:cover;
+    background-position:center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.contact-section img {
+    width: 300px;
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+/* Contact Info */
+.contact-info {
+    margin-bottom: 25px;
+    color: white;
+}
+
+.contact-info p {
+    margin: 8px 0;
+}
+
+/* Form */
+form {
+    width: 60%;
+    margin: auto;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form textarea {
+    height: 120px;
+    resize: none;
+}
+
+form button {
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #3749b5;
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.social-links a:hover {
+    color: #facc15;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    margin-top: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.footer-left, .footer-right {
+    width: 45%;
+}
+
+.footer-right a {
+    display: block;
+    color: white;
+    margin: 5px 0;
+    text-decoration: none;
+}
+.footer-right button a {
+    background:blue;
+    color:white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-right a:hover {
+    color: orange;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #111;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-left, .footer-right {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-container">
+        <h2 class="">TNTransport</h2>
+        <img src="logo.jpg" height="50px", width="50px">
+        <nav>
+
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="Add-product.html">Add new product</a>
+            <a href="contact.html">Contact</a>
+            <button><a href="register.html">Register</a></button>
+        </nav>
+    </div>
+</header>
+<section class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+        <p><strong>Address:</strong> 123 Auto Drive, Motor City, USA</p>
+        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+        <p><strong>Email:</strong> support@carrentalsystem.com</p>
+        <p><strong>Business Hours:</strong> Mon-Fri 9 AM - 6 PM, Sat 10 AM - 4 PM, Sun Closed</p>
+    </div>
+
+    <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required><br><br>
+        <input type="email" name="email" placeholder="Your Email" required><br><br>
+        <input type="tel" name="phone" placeholder="Your Phone"><br><br>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <div class="social-links">
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a> |
+        <a href="#">Instagram</a>
+    </div>
+</section>
+<footer>
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-left">
+                <h3>TNTransport</h3>
+                <p>123 Main Street, Trichy, India</p>
+                <p>Email: info@tntransport.com</p>
+                <p>Phone: +91 6387977672</p>
+            </div>
+            <div class="footer-right">
+                <h4>Quick Links</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="Add-product.html">Add new product</a>
+                    <a href="contact.html">Contact</a>
+                    <button><a href="register.html">Register</a></button>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TNTransport. All Rights Reserved.</p>
+        </div>
+    </footer>
+</footer>
+</body>
+</html>

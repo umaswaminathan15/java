@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Add</title>
+  <style>
+  /* Reset */
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  }
+
+  body {
+  background-color: lightblue;
+  }
+
+  /* Header */
+  header {
+  background-color: #003366;
+  color: white;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  }
+
+  .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  }
+
+  header h2 {
+  margin-right: 10px;
+  }
+
+  /* Navigation */
+  nav {
+  display: flex;
+  align-items: center;
+  }
+
+  nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+  }
+
+  nav a:hover {
+  text-decoration: underline;
+  }
+
+  nav button {
+   background: blue;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  nav button a {
+  color: white;
+  text-decoration: none;
+  }
+
+  /* Title */
+  h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #333;
+  }
+
+  /* Form */
+  form {
+  background: #fff;
+  max-width: 450px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  label {
+  font-weight: bold;
+  color: #444;
+  display: block;
+  }
+
+  input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  }
+
+  input:focus {
+  border-color: #1abc9c;
+  outline: none;
+  }
+
+  /* Button */
+  button {
+  width: 100%;
+  padding: 10px;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+
+  button:hover {
+  background: #16a085;
+  }
+
+  /* Links */
+  a {
+  display: block;
+  text-align: center;
+  margin: 15px;
+  text-decoration: none;
+  color: #2c3e50;
+  }
+
+  /* Footer */
+  footer {
+  background: #2c3e50;
+  color: white;
+  margin-top: 40px;
+  padding: 20px 0;
+  }
+
+  .footer-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
+  }
+
+  .footer-left,
+  .footer-right {
+  margin: 10px;
+  }
+
+  .footer-right ul {
+  list-style: none;
+  }
+
+  .footer-right ul li {
+  margin: 5px 0;
+  }
+
+  .footer-right a {
+  color: white;
+  text-decoration: none;
+  }
+
+  .footer-right a:hover {
+  color: #1abc9c;
+  }
+
+  .footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid #555;
+  padding-top: 10px;
+  }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container header-container">
+    <h2 class="">TNTransport</h2>
+    <img src="logo.jpg" height="50px", width="50px">
+    <nav>
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <button><a href="register.html">Register</a></button>
+    </nav>
+  </div>
+</header>
+<h1>Add new Product</h1>
+<form action="" onsubmit="addprod(event)" id="forms">
+  <label>Name:
+    <input type="text" placeholder="enter name" id="name" required>
+  </label><br><br>
+  <label>Ratings:
+    <input type="number" placeholder="enter ratings" id="ratings" required>
+  </label><br><br>
+  <label>Price:
+    <input type="number" placeholder="enter price" id="price" required>
+  </label><br><br>
+  <label>Seats:
+    <input type="number" placeholder="enter seats" id="seats" required>
+  </label><br><br>
+  <label>Music:
+    <input type="text" placeholder="enter music" id="music" required>
+  </label><br><br>
+  <label>AC:
+    <input type="text" placeholder="enter AC" id="AC" required>
+  </label><br><br>
+  <label>image:
+    <input type="file" id="image">
+  </label><br><br>
+  <button>submit</button>
+</form>
+<a href="/index.html">Back products</a>
+</body>
+
+<script>
+  function addprod(e) {
+      e.preventDefault();
+      let name = document.getElementById("name").value
+      let ratings = document.getElementById("ratings").value
+      let price = document.getElementById("price").value
+      let seats = document.getElementById("seats").value
+      let music = document.getElementById("music").value
+      let AC = document.getElementById("AC").value
+      let image = document.getElementById("image").files[0]
+
+      const formdata = new FormData()
+      formdata.append("name", name)
+      formdata.append("ratings", ratings)
+      formdata.append("price", price)
+       formdata.append("seats", seats)
+        formdata.append("music", music)
+         formdata.append("AC", AC)
+      formdata.append("image", image)
+
+      fetch("http://localhost:8080/api/product/add", {
+          method: "POST",
+          body: formdata
+      })
+          .then(res => res.json())
+          .then(data => console.log("data added", data))
+          .catch(err => console.log(err))
+
+    document.getElementById("forms").reset();
+  }
+</script>
+<footer>
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-left">
+        <h3>TNTransport</h3>
+        <p>123 Main Street, Trichy, India</p>
+        <p>Email: info@tntransport.com</p>
+        <p>Phone: +91 6387977672</p>
+      </div>
+      <div class="footer-right">
+        <h4>Quick Links</h4>
+         <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="Add-product.html">Add new product</a>
+          <a href="contact.html">Contact</a> </li>
+          <button><a href="register.html">Register</a></button>
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 TNTransport. All Rights Reserved.</p>
+    </div>
+  </footer>
+</footer>
+</html>
